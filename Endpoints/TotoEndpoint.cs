@@ -1,4 +1,5 @@
 ﻿using MinimalApis.Attributes;
+using MinimalApis.Models;
 using MinimalApis.Services;
 
 namespace MinimalApis.Endpoints;

@@ -10,5 +10,3 @@ var app = appBuider.Build();
 app.ConfigureEndpoints(typeof(TotoEndpoint));
 
 app.Run();
-
-public record GreetingModel(string Name);
