@@ -1,5 +1,4 @@
 ﻿using MinimalApis.Attributes;
-using MinimalApis.Models;
 using MinimalApis.Services;
 
 namespace MinimalApis.Endpoints;
@@ -9,7 +8,7 @@ public static class TotoEndpoint
 {
 
     [Get("home/{name}")]
-    [Get("Toto/{name}")]
+    [Get("toto/{name}")]
     public static async Task<IResult> GetGreetings(string name, Service service)
     {
         return Results.Ok(new { greeting = service.GetHelloWorld() + $" {name}" });
