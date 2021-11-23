@@ -23,15 +23,16 @@ namespace MinimalApis.Helpers
             {
                 var types = methodWithAttribute.Method.GetParameters().Select(p => p.ParameterType);
                 types = types.Concat(new[] { methodWithAttribute.Method.ReturnType });
+                var @delegate = Delegate.CreateDelegate(Expression.GetFuncType(types.ToArray()), methodWithAttribute.Method);
                 foreach (var attribute in methodWithAttribute.Attributes)
                 {
                     switch (attribute)
                     {
                         case GetAttribute get:
-                            app.MapGet(get.Route, Delegate.CreateDelegate(Expression.GetFuncType(types.ToArray()), methodWithAttribute.Method));
+                            app.MapGet(get.Route, @delegate);
                             break;
                         case PostAttribute post:
-                            app.MapPost(post.Route, Delegate.CreateDelegate(Expression.GetFuncType(types.ToArray()), methodWithAttribute.Method));
+                            app.MapPost(post.Route, @delegate);
                             break;
                     }
                 }
